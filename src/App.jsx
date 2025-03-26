@@ -107,6 +107,8 @@ const App = () => {
     setMoney((prevMoney) => prevMoney + fighter.price);
   };
 
+  const totalStrength = team.reduce((sum, fighter) => sum + fighter.strength, 0);
+  const totalAgility = team.reduce((sum, fighter) => sum + fighter.agility, 0);
   return (
     <div>
       <h2>Your Team</h2>
@@ -124,8 +126,11 @@ const App = () => {
             </li>
           ))}
         </ul>
-
       ) }
+      <div>
+          <p>Total Strength: {totalStrength}</p>
+          <p>Total Agility: {totalAgility}</p>
+        </div>
     </div>
   );
 };
