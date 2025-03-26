@@ -32,7 +32,7 @@ p {
   border-radius: 10px;
   padding: 10px;
   text-align: center;
-  background-color: #1e53ae;
+  background-color: #282c31;
   box-sizing: border-box; /* Ensures padding and border don't mess with the layout */
 }
 
@@ -44,7 +44,7 @@ p {
 }
 
 button {
-  background-color: #28a745;
+  background-color: #1d3322;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -58,11 +58,11 @@ button:hover {
 }
 
 button:active {
-  background-color: #1e7e34;
+  background-color: #1a2c1e;
 }
 
 .team-container .card {
-  background-color: #e9ecef;
+  background-color: #20493c;
 }
 
 .fighters-container .card, .team-container .card {

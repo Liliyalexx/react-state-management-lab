@@ -5,7 +5,11 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #f00606;
+  background-image: url('./assets/zombie.jpg');
+  background-size: cover;  
+  background-position: center;  
+  background-repeat: no-repeat;
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
