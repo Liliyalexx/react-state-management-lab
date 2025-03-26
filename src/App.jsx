@@ -1,5 +1,6 @@
 // src/App.jsx
 import { useState } from "react";
+import './App.css';
 const App = () => {
   // Step 1: State variables
   const [team, setTeam] = useState([]);
@@ -87,52 +88,72 @@ const App = () => {
     },
   ]);
 
-  // Step 2: // Add fighter function
-  const handleAddFighter = (fighter) => {
-    if (money >= fighter.price) {
-      setTeam((prevTeam) => [...prevTeam, fighter]);
-      setZombieFighters((prevFighters) =>
-        prevFighters.filter((f) => f.id !== fighter.id)
-      );
-      setMoney((prevMoney) => prevMoney - fighter.price);
-    } else {
-      console.log("Not enough money");
-    }
-  };
+// Handle add fighter
+const handleAddFighter = (fighter) => {
+  if (money >= fighter.price) {
+    setTeam([...team, fighter]);
+    setZombieFighters(zombieFighters.filter((f) => f.id !== fighter.id));
+    setMoney(money - fighter.price);
+  } else {
+    console.log('Not enough money');
+  }
+};
 
-  // Step 3: // Remove fighter from team
-  const handleRemoveFighter = (fighter) => {
-    setTeam((prevTeam) => prevTeam.filter((f) => f.id !== fighter.id));
-    setZombieFighters((prevFighters) => [...prevFighters, fighter]);
-    setMoney((prevMoney) => prevMoney + fighter.price);
-  };
-
+// Handle remove fighter
+const handleRemoveFighter = (fighter) => {
+  setTeam(team.filter((f) => f.id !== fighter.id));
+  setZombieFighters([...zombieFighters, fighter]);
+  setMoney(money + fighter.price);
+};
+  // Calculate total strength and agility
   const totalStrength = team.reduce((sum, fighter) => sum + fighter.strength, 0);
   const totalAgility = team.reduce((sum, fighter) => sum + fighter.agility, 0);
+  
+  
   return (
-    <div>
-      <h2>Your Team</h2>
-      {team.length === 0 ? (<p> Pick some team members!</p>
-      ):(
-        <ul>
-          {team.map((fighter) =>(
-            <li key={fighter.id}>
-              <img src={fighter.img} alt={fighter.name} width="50" />
-              <p>{fighter.name}</p>
+    <div className="App">
+      <h1>Zombie Apocalypse Survival Team</h1>
+      <p>Money: ${money}</p>
+
+      <div>
+        <h2>Pick some team members!</h2>
+        <div className="fighters-container">
+          {zombieFighters.map((fighter) => (
+            <div key={fighter.id} className="card">
+              <img src={fighter.img} alt={fighter.name} />
+              <h3>{fighter.name}</h3>
+              <p>Price: ${fighter.price}</p>
               <p>Strength: {fighter.strength}</p>
               <p>Agility: {fighter.agility}</p>
-              <p>Price: {fighter.price}</p>
-              <button onClick={() => handleRemoveFighter(fighter)}>Remove</button>
-            </li>
+              <button onClick={() => handleAddFighter(fighter)}>Add to team</button>
+            </div>
           ))}
-        </ul>
-      ) }
-      <div>
+        </div>
+      </div>
+
+      {team.length === 0 ? (
+        <p>Pick some team members!</p>
+      ) : (
+        <div>
+          <h2>Your Team</h2>
+          <div className="team-container">
+            {team.map((fighter) => (
+              <div key={fighter.id} className="card">
+                <img src={fighter.img} alt={fighter.name} />
+                <h3>{fighter.name}</h3>
+                <p>Price: ${fighter.price}</p>
+                <p>Strength: {fighter.strength}</p>
+                <p>Agility: {fighter.agility}</p>
+                <button onClick={() => handleRemoveFighter(fighter)}>Remove from team</button>
+              </div>
+            ))}
+          </div>
           <p>Total Strength: {totalStrength}</p>
           <p>Total Agility: {totalAgility}</p>
         </div>
+      )}
     </div>
   );
-};
+}
 
 export default App;

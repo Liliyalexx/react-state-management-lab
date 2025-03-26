@@ -1,16 +1,70 @@
-#root {
-  margin: 16px;
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
-ul {
+h1 {
+  color: #333;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.fighters-container, .team-container {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
 }
 
-li {
-  list-style: none;
-  margin: 8px;
-  padding: 8px;
-  border: whitesmoke 3px solid;
+.card {
+  width: 200px;
+  max-width: 200px; /* Ensures the card doesn't get bigger than the specified width */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #1e53ae;
+  box-sizing: border-box; /* Ensures padding and border don't mess with the layout */
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
   border-radius: 8px;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button:active {
+  background-color: #1e7e34;
+}
+
+.team-container .card {
+  background-color: #e9ecef;
+}
+
+.fighters-container .card, .team-container .card {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
